@@ -321,7 +321,7 @@ void inicializador_paralelo(unsigned long tiempo_inicio){
 // CAMBIO DE CICLO DENTRO DE LOS PRIMEROS 15 SEGUNDOS
 
 void comprobador(int *NuevoCiclo,int *nuevoValor){
-  //Funcion que debe verificar si es posible cambiar el nuevo valor 
+    //Funcion que debe verificar si es posible cambiar el nuevo valor 
 
     if(nuevoCiclo && cambio){
       *NuevoCiclo=*nuevoValor;
