@@ -234,6 +234,7 @@ String status = doc["status"].as<String>();  // Esto asegura la conversión corr
   //Podria prescindirse del condicional, pues si recibe un mensaje a este topic, es que el MPD confirma de haber recibido los mensajes de los MC's
   if(status.equals("confirmado")){
     confirmador=true;
+    Serial.println("Se recibió confirmación");
   }
   
  
@@ -357,12 +358,15 @@ void comprobador(int *NuevoCiclo,int *nuevoValor){
         ultimoCiclo=false;
         //Refrescar variable para siguiente confirmación 
         stuckConfirmador=true;
+        confirmador=false;
       }
-
+    
+    
     if(millis()>=t_comprobador+20000 && stuckConfirmador){
       if(!confirmador){
         *NuevoCiclo=120000;
         stuckConfirmador=false;
+        Serial.println("No se recibio confirmación, se va a valor por default");
       }
     }
       
