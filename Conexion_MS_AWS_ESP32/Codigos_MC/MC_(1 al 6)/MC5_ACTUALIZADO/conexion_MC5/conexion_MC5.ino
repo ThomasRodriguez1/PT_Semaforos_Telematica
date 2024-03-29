@@ -246,7 +246,7 @@ void PublishJson()
     Serial.println("JSON enviado correctamente");
   } 
   else{
-      Serial.println("Error al enviar JSON");
+    Serial.println("Error al enviar JSON");
   }
 }
 
@@ -304,7 +304,7 @@ void inicializador_paralelo(unsigned long tiempo_inicio){
 // CAMBIO DE CICLO DENTRO DE LOS PRIMEROS 15 SEGUNDOS
 
 void comprobador(int *NuevoCiclo,int *nuevoValor){
-  //Funcion que debe verificar si es posible cambiar el nuevo valor 
+    //Funcion que debe verificar si es posible cambiar el nuevo valor 
 
     if(nuevoCiclo && cambio){
       *NuevoCiclo=*nuevoValor;
@@ -339,7 +339,7 @@ void comprobador(int *NuevoCiclo,int *nuevoValor){
 // COMPORTAMIENTO PARA EL SEMAFORO PEATONAL
 
 void SP_Comportamiento(int leds[],int NuevoCiclo,float relacionRojo,unsigned long *t1,unsigned long *t2,boolean *encender){
-//Enciende de acuerdo a relacionRojo, el tiempo de verde es el resto
+  //Enciende de acuerdo a relacionRojo, el tiempo de verde es el resto
   if(millis()>*t1+(NuevoCiclo*relacionRojo) && *encender){
   *t1 = millis();
   //print_tiempo(*t1);
