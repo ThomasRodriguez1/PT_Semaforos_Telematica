@@ -33,6 +33,10 @@ Pausa-->      1
 Reinicio-->   2
 */
 
+//Agregadas para manejar la confirmación 28/03/2024
+bool confirmador=false;
+bool stuckConfirmador=true;
+
 //VARIABLES PARA LA CONEXION AWS
 WiFiClientSecure net = WiFiClientSecure();
 MQTTClient client(256);
@@ -183,12 +187,23 @@ void messageHandler(String &topic, String &payload)//void messageHandler(char *t
   }
 }
 
+/*
+El sistema puede modificarse hasta los 22.25 s de hacer iniciado
+Se configurará para que espere hasta los 22 segundos, si no recibe confirmación cambiará su tiempo al por defecto 
+*/
+
 void handlerACKs( JsonObject &doc){
   // Procesa el mensaje recibido en Topic1
   Serial.println("Procesando mensaje para Topic1");
   // Ejemplo: Imprimir un valor específico del JSON
   String status = doc["status"].as<String>();  // Esto asegura la conversión correcta
   Serial.println(status);
+
+  //Podria prescindirse del condicional, pues si recibe un mensaje a este topic, es que el MPD confirma de haber recibido los mensajes de los MC's
+  if(status.equals("confirmado")){
+    confirmador=true;
+    Serial.println("Se recibió confirmación");
+  }
 }
 
 void handlerCiclos( JsonObject &doc){
@@ -203,7 +218,6 @@ void handlerCiclos( JsonObject &doc){
       if (!started)
       {
         started = true;
-
         // INICIA la tarea en paralelo
       }
 }
@@ -300,6 +314,15 @@ void comprobador(int *NuevoCiclo,int *nuevoValor){
         //Bandera
         ultimoCiclo=false;
       }
+
+          
+      if(millis()>=t_comprobador+20000 && stuckConfirmador){
+        if(!confirmador){
+          *NuevoCiclo=120000;
+          stuckConfirmador=false;
+          Serial.println("No se recibio confirmación, se va a valor por default");
+        }
+      } 
     } 
 }
 
