@@ -57,6 +57,10 @@ Pausa-->      1
 Reinicio-->   2
 */
 
+//Agregadas para manejar la confirmación 28/03/2024
+bool confirmador=false;
+bool stuckConfirmador=true;
+
 
 //VARIABLES PARA LA CONEXION AWS
 WiFiClientSecure net = WiFiClientSecure();
@@ -216,10 +220,16 @@ void handlerACKs( JsonObject &doc){
   // Ejemplo: Imprimir un valor específico del JSON
   String status = doc["status"].as<String>();  // Esto asegura la conversión correcta
   Serial.println(status);
+
+  //Podria prescindirse del condicional, pues si recibe un mensaje a este topic, es que el MPD confirma de haber recibido los mensajes de los MC's
+  if(status.equals("confirmado")){
+    confirmador=true;
+    Serial.println("Se recibió confirmación");
+  }
 }
 
 void handlerCiclos( JsonObject &doc){
-        // Extraer valores del JSON y almacenarlos en variables
+      // Extraer valores del JSON y almacenarlos en variables
       resultado = doc["resultado"].as<int>();
       Serial.print("Resultado: ");
       Serial.println(resultado);
@@ -230,7 +240,6 @@ void handlerCiclos( JsonObject &doc){
       if (!started)
       {
         started = true;
-
         // INICIA la tarea en paralelo
       }
 }
@@ -242,7 +251,7 @@ void PublishJson()
   DynamicJsonDocument doc(512);
 
   // Creando JSON
-  doc["UltimoCiclo_MC2"] = UltimoCiclo;
+  doc["UltimoCiclo"] = UltimoCiclo;
   doc["MCID"]=2; //ID del MC
   String json;
   serializeJson(doc, json);
@@ -251,8 +260,8 @@ void PublishJson()
     Serial.println("JSON enviado correctamente");
   } 
   else{
-      Serial.println("Error al enviar JSON");
-    }
+    Serial.println("Error al enviar JSON");
+  }
 }
 
 //////////////////////////////////////////////////////////RECONEXION a INTERNET Y A AWS///////////////////////////////////////////////////
@@ -285,7 +294,7 @@ void ensureMqttConnection() {  //reconectar a AWS
       if (client.connect(THINGNAME)) {
         // Vuelve a suscribirte a los temas necesarios aquí
         client.subscribe(AWS_IOT_SUBSCRIBE_TOPIC);
-      } else {
+      }else{
         Serial.print(".");
         delay(1000);
       }
@@ -332,16 +341,21 @@ void comprobador(int *NuevoCiclo,int *nuevoValor){
         //Bandera
         ultimoCiclo=false;
       }
-    }
-    
+
+      if(millis()>=t_comprobador+20000 && stuckConfirmador){
+        if(!confirmador){
+          *NuevoCiclo=120000;
+          stuckConfirmador=false;
+          Serial.println("No se recibio confirmación, se va a valor por default");
+        }
+      }
+    }  
 }
 
 // COMPORTAMIENTO PARA EL SEMAFORO VEHICULAR
 
 void SV_Comportamiento4(int leds[],int NuevoCiclo,unsigned long *t1,float *relaciones_V,boolean *encender){
   //Funcion de comportamiento de Semáforo vehicular de 3 luces 
-  
-  
   if(millis()>*t1+((*relaciones_V)*NuevoCiclo) && *encender){
     *t1=millis();
     print_tiempo(*t1);
@@ -410,7 +424,7 @@ void SV_Comportamiento4(int leds[],int NuevoCiclo,unsigned long *t1,float *relac
 // COMPORTAMIENTO PARA EL SEMAFORO PEATONAL
 
 void SP_Comportamiento(int leds[],int NuevoCiclo,float relacionRojo,unsigned long *t1,unsigned long *t2,boolean *encender){
-//Enciende de acuerdo a relacionRojo, el tiempo de verde es el resto
+  //Enciende de acuerdo a relacionRojo, el tiempo de verde es el resto
   if(millis()>*t1+(NuevoCiclo*relacionRojo) && *encender){
   *t1 = millis();
   //print_tiempo(*t1);

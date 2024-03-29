@@ -110,30 +110,23 @@ void parallelTask(void *pvParameters)
 
           }
         }
-      
-  
+        
     if(nuevoValor>89000 && nuevoMensaje){
       // Mostrar el nuevo valor asignado
       Serial.print("Nuevo valor en milisegundos personalizado: ");
       Serial.print(nuevoValor);
       Serial.print(" Tiempo escrito en: ");
       Serial.println(millis()); 
+      
       //Bandera
-
       cambio=true;
       nuevoMensaje=false;
-   
-      
     }
       
-    
     //llamado de las funciones para el comportamiento
     SP_Comportamiento(SP1,NuevoCiclo,relacionRojo_P1,&tiempoP1_1,&tiempoP1_2,&encenderP1);
-
     SV_Comportamiento(SV1,NuevoCiclo,t_luces,relacionVerde_V1,relacionAmarillo_V1,encenderV1);
-
     comprobador(&NuevoCiclo,&nuevoValor);
-    
   }
 }
 
@@ -161,7 +154,7 @@ void connectAWS()
 
   // Create a message handler
   client.onMessage(messageHandler);
- // client.setCallback(messageHandler);
+  // client.setCallback(messageHandler);
 
   Serial.println("Conectando a AWS IoT");
 
@@ -179,8 +172,8 @@ void connectAWS()
 
   // Suscribirse al tema
   client.subscribe(AWS_IOT_SUBSCRIBE_TOPIC,1);  ///QoS 1
-   client.subscribe(AWS_IOT_ACKS_TOPIC,1);  ///QoS 1
- // client.subscribe(AWS_IOT_SUBSCRIBE_TOPIC2);
+  client.subscribe(AWS_IOT_ACKS_TOPIC,1);  ///QoS 1
+  // client.subscribe(AWS_IOT_SUBSCRIBE_TOPIC2);
   
 
   Serial.println("¡AWS IoT Conectado!");
@@ -216,19 +209,16 @@ void messageHandler(String &topic, String &payload)
   }
 }
 
-
-//Agregar que si recibe confirmación continue con el cambio en caso contrario su comportamiento cambia al por defecto
 /*
 El sistema puede modificarse hasta los 22.25 s de hacer iniciado
 Se configurará para que espere hasta los 22 segundos, si no recibe confirmación cambiará su tiempo al por defecto 
 */
 
-
 void handlerACKs( JsonObject &doc){
-    // Procesa el mensaje recibido en Topic1
+  // Procesa el mensaje recibido en Topic1
   Serial.println("Procesando mensaje para Topic1");
   // Ejemplo: Imprimir un valor específico del JSON
-String status = doc["status"].as<String>();  // Esto asegura la conversión correcta
+  String status = doc["status"].as<String>();  // Esto asegura la conversión correcta
   Serial.println(status);
   
   //Podria prescindirse del condicional, pues si recibe un mensaje a este topic, es que el MPD confirma de haber recibido los mensajes de los MC's
@@ -236,12 +226,10 @@ String status = doc["status"].as<String>();  // Esto asegura la conversión corr
     confirmador=true;
     Serial.println("Se recibió confirmación");
   }
-  
- 
 }
 
 void handlerCiclos( JsonObject &doc){
-        // Extraer valores del JSON y almacenarlos en variables
+      // Extraer valores del JSON y almacenarlos en variables
       resultado = doc["resultado"].as<int>();
       Serial.print("Resultado: ");
       Serial.println(resultado);
@@ -252,7 +240,6 @@ void handlerCiclos( JsonObject &doc){
       if (!started)
       {
         started = true;
-
         // INICIA la tarea en paralelo
       }
 }
@@ -275,8 +262,8 @@ void PublishJson()
     Serial.println("JSON enviado correctamente");
   } 
   else{
-      Serial.println("Error al enviar JSON");
-    }
+    Serial.println("Error al enviar JSON");
+  }
 }
 
 //////////////////////////////////////////////////////////RECONEXION a INTERNET Y A AWS///////////////////////////////////////////////////
@@ -309,7 +296,7 @@ void ensureMqttConnection() {  //reconectar a AWS
       if (client.connect(THINGNAME)) {
         // Vuelve a suscribirte a los temas necesarios aquí
         client.subscribe(AWS_IOT_SUBSCRIBE_TOPIC);
-      } else {
+      }else{
         Serial.print(".");
         delay(1000);
       }
@@ -336,14 +323,13 @@ void inicializador_paralelo(unsigned long tiempo_inicio){
 // CAMBIO DE CICLO DENTRO DE LOS PRIMEROS 15 SEGUNDOS
 
 void comprobador(int *NuevoCiclo,int *nuevoValor){
-  //Funcion que debe verificar si es posible cambiar el nuevo valor 
+    //Funcion que debe verificar si es posible cambiar el nuevo valor 
 
     if(nuevoCiclo && cambio){
       *NuevoCiclo=*nuevoValor;
       Serial.print("Valor modificado en: ");
       Serial.println(millis());
       cambio=false;
-
     }
     if(millis()<=t_comprobador+15000){        
       nuevoCiclo=true;
@@ -362,16 +348,14 @@ void comprobador(int *NuevoCiclo,int *nuevoValor){
       }
     
     
-    if(millis()>=t_comprobador+20000 && stuckConfirmador){
-      if(!confirmador){
-        *NuevoCiclo=120000;
-        stuckConfirmador=false;
-        Serial.println("No se recibio confirmación, se va a valor por default");
-      }
+      if(millis()>=t_comprobador+20000 && stuckConfirmador){
+        if(!confirmador){
+          *NuevoCiclo=120000;
+          stuckConfirmador=false;
+          Serial.println("No se recibio confirmación, se va a valor por default");
+        }
+      } 
     }
-      
-    }
-    
 }
 
 // COMPORTAMIENTO PARA EL SEMAFORO VEHICULAR
@@ -431,7 +415,7 @@ void SV_Comportamiento(int leds[],int NuevoCiclo,unsigned long *t1,float relacio
 // COMPORTAMIENTO PARA EL SEMAFORO PEATONAL
 
 void SP_Comportamiento(int leds[],int NuevoCiclo,float relacionRojo,unsigned long *t1,unsigned long *t2,boolean *encender){
-//Enciende de acuerdo a relacionRojo, el tiempo de verde es el resto
+  //Enciende de acuerdo a relacionRojo, el tiempo de verde es el resto
   if(millis()>*t1+(NuevoCiclo*relacionRojo) && *encender && continuar){
   *t1 = millis();
   //print_tiempo(*t1);
@@ -452,8 +436,6 @@ void SP_Comportamiento(int leds[],int NuevoCiclo,float relacionRojo,unsigned lon
 
   //Permitir que se pueda "enviar" de nuevo ultimoCiclo
   ultimoCiclo=true;
-
-  
   }
 }
 
@@ -519,16 +501,11 @@ void loop()
     Serial.println(millis());
     prueba_tiempo1=false;
   }*/
-
- if (WiFi.status() != WL_CONNECTED) {
+  if (WiFi.status() != WL_CONNECTED) {
     reconnectWiFi();
   }
   if (!client.connected()) {
     ensureMqttConnection();
   }
-
-
   client.loop();
-  
- 
 }
