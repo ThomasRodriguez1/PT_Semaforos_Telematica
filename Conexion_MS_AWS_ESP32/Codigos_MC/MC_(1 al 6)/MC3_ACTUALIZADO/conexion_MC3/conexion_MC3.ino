@@ -253,8 +253,8 @@ void PublishJson()
     Serial.println("JSON enviado correctamente");
   } 
   else{
-      Serial.println("Error al enviar JSON");
-    }
+    Serial.println("Error al enviar JSON");
+  }
 }
 
 //////////////////////////////////////////////////////////RECONEXION a INTERNET Y A AWS///////////////////////////////////////////////////
@@ -313,7 +313,7 @@ void inicializador_paralelo(unsigned long tiempo_inicio){
 // CAMBIO DE CICLO DENTRO DE LOS PRIMEROS 15 SEGUNDOS
 
 void comprobador(int *NuevoCiclo,int *nuevoValor){
-  //Funcion que debe verificar si es posible cambiar el nuevo valor 
+    //Funcion que debe verificar si es posible cambiar el nuevo valor 
 
     if(nuevoCiclo && cambio){
       *NuevoCiclo=*nuevoValor;
@@ -348,8 +348,6 @@ void comprobador(int *NuevoCiclo,int *nuevoValor){
 
 void SV_Comportamiento(int leds[],int NuevoCiclo,unsigned long *t1,float *relaciones_V,boolean *encender){
   //Funcion de comportamiento de Semáforo vehicular de 3 luces 
-  
-  
   if(millis()>*t1+((*relaciones_V)*NuevoCiclo) && *encender){
     *t1=millis();
     print_tiempo(*t1);
