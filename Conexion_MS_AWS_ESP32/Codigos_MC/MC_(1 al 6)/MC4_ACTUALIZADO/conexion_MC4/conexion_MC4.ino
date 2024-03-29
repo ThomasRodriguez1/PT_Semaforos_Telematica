@@ -239,7 +239,7 @@ void PublishJson()
   } 
   else{
       Serial.println("Error al enviar JSON");
-    }
+  }
 }
 
 
