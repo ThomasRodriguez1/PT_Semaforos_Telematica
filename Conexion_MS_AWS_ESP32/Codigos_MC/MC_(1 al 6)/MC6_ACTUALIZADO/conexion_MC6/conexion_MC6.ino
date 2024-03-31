@@ -348,7 +348,7 @@ void SV_Comportamiento(int leds[],int NuevoCiclo,unsigned long *t1,float *relaci
   //Funcion de comportamiento de Semáforo vehicular de 3 luces 
   
   
-  if(millis()>*t1+((*relaciones_V)*NuevoCiclo) && *encender){
+  if(millis()>*t1+((*relaciones_V)*NuevoCiclo) && *encender && continuar){
     *t1=millis();
     print_tiempo(*t1);
     Serial.println("Empieza luz verde");
@@ -361,7 +361,7 @@ void SV_Comportamiento(int leds[],int NuevoCiclo,unsigned long *t1,float *relaci
   
 
   if(contador_parpadeo<9){
-    if(millis()>=*(t1+1)+(NuevoCiclo*(*(relaciones_V)))+(NuevoCiclo*(*(relaciones_V+1)))-(NuevoCiclo*(relacionParpadeo_V/9)*stuck_contador) && millis()<=*(t1+1)+(NuevoCiclo*(*(relaciones_V)))+(NuevoCiclo*(*(relaciones_V+1))) && *(encender+2) ){
+    if(millis()>=*(t1+1)+(NuevoCiclo*(*(relaciones_V)))+(NuevoCiclo*(*(relaciones_V+1)))-(NuevoCiclo*(relacionParpadeo_V/9)*stuck_contador) && millis()<=*(t1+1)+(NuevoCiclo*(*(relaciones_V)))+(NuevoCiclo*(*(relaciones_V+1))) && *(encender+2) && continuar){
       //Serial.print("Empieza parpadeo en: ");
       //Serial.println(millis());
       digitalWrite(leds[0],!digitalRead(leds[0]));
@@ -371,7 +371,7 @@ void SV_Comportamiento(int leds[],int NuevoCiclo,unsigned long *t1,float *relaci
   }    
 
   
-  if(millis()>*(t1+2)+(NuevoCiclo*(*(relaciones_V)))+(NuevoCiclo*(*(relaciones_V+1))) && *(encender+1)){
+  if(millis()>*(t1+2)+(NuevoCiclo*(*(relaciones_V)))+(NuevoCiclo*(*(relaciones_V+1))) && *(encender+1) && continuar){
   *(t1+2)=millis();
   print_tiempo(*(t1+2));
   Serial.println("Empieza luz amarilla");
@@ -384,7 +384,7 @@ void SV_Comportamiento(int leds[],int NuevoCiclo,unsigned long *t1,float *relaci
   stuck_contador=9;
   }
 
-  if(millis()>*(t1+3)+(NuevoCiclo*(*(relaciones_V)))+(NuevoCiclo*(*(relaciones_V+1)))+(NuevoCiclo*(*(relaciones_V+2))) && *(encender+3)){
+  if(millis()>*(t1+3)+(NuevoCiclo*(*(relaciones_V)))+(NuevoCiclo*(*(relaciones_V+1)))+(NuevoCiclo*(*(relaciones_V+2))) && *(encender+3) && continuar){
   *(t1+3)=millis();
   print_tiempo(*(t1+3));
   Serial.println("Empieza luz roja");
@@ -395,7 +395,7 @@ void SV_Comportamiento(int leds[],int NuevoCiclo,unsigned long *t1,float *relaci
 
 
 
-  if(millis()>*(t1+4)+NuevoCiclo){
+  if(millis()>*(t1+4)+NuevoCiclo && continuar){
     *(t1+4)=millis();
     print_tiempo(*(t1+4));
     Serial.println("Empieza luz roja");
@@ -414,7 +414,7 @@ void SV_Comportamiento(int leds[],int NuevoCiclo,unsigned long *t1,float *relaci
 
 void SP_Comportamiento(int leds[],int NuevoCiclo,float relacionRojo,unsigned long *t1,unsigned long *t2,boolean *encender){
   //Enciende de acuerdo a relacionRojo, el tiempo de verde es el resto
-  if(millis()>*t1+(NuevoCiclo*relacionRojo) && *encender){
+  if(millis()>*t1+(NuevoCiclo*relacionRojo) && *encender && continuar){
   *t1 = millis();
   //print_tiempo(*t1);
   //Serial.println("Empieza luz en verde");
@@ -423,7 +423,7 @@ void SP_Comportamiento(int leds[],int NuevoCiclo,float relacionRojo,unsigned lon
   *encender=false;
   }
   //Tiempo en rojo 
-  if(millis()>*t2+NuevoCiclo){
+  if(millis()>*t2+NuevoCiclo && continuar){
   *t2 = millis();
   //print_tiempo(*t2);
   //Serial.println("Empieza luz en rojo");
@@ -431,6 +431,9 @@ void SP_Comportamiento(int leds[],int NuevoCiclo,float relacionRojo,unsigned lon
   digitalWrite(leds[1], LOW);
   *encender=true;
   *t1=*t2;
+
+  //Permitir que se pueda "enviar" de nuevo ultimoCiclo
+  ultimoCiclo=true;
   }
 }
 
