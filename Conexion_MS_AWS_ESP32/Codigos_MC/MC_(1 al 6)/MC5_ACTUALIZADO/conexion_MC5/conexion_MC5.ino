@@ -343,7 +343,7 @@ void comprobador(int *NuevoCiclo,int *nuevoValor){
 
 void SP_Comportamiento(int leds[],int NuevoCiclo,float relacionRojo,unsigned long *t1,unsigned long *t2,boolean *encender){
   //Enciende de acuerdo a relacionRojo, el tiempo de verde es el resto
-  if(millis()>*t1+(NuevoCiclo*relacionRojo) && *encender){
+  if(millis()>*t1+(NuevoCiclo*relacionRojo) && *encender && continuar){
   *t1 = millis();
   //print_tiempo(*t1);
   //Serial.println("Empieza luz en verde");
@@ -352,7 +352,7 @@ void SP_Comportamiento(int leds[],int NuevoCiclo,float relacionRojo,unsigned lon
   *encender=false;
   }
   //Tiempo en rojo 
-  if(millis()>*t2+NuevoCiclo){
+  if(millis()>*t2+NuevoCiclo && continuar){
   *t2 = millis();
   //print_tiempo(*t2);
   //Serial.println("Empieza luz en rojo");
@@ -362,6 +362,8 @@ void SP_Comportamiento(int leds[],int NuevoCiclo,float relacionRojo,unsigned lon
   *t1=*t2;
   t_comprobador=*t2;
 
+  //Permitir que se pueda "enviar" de nuevo ultimoCiclo
+  ultimoCiclo=true;
   }
 }
 
