@@ -323,6 +323,9 @@ void comprobador(int *NuevoCiclo,int *nuevoValor){
         PublishJson();
         //Bandera
         ultimoCiclo=false;
+        //Refrescar variable para siguiente confirmación 
+        stuckConfirmador=true;
+        confirmador=false;
       } 
 
           
