@@ -1,0 +1,44 @@
+.traffic-system {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 20px;
+  align-items: flex-start; /* Asegúrate de que los elementos están alineados al inicio verticalmente */
+}
+
+.traffic-light,
+.pedestrian-light {
+  background-color: #333;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  margin: 10px 20px 0 20px; /* Margen extra en la parte superior para separar de la info */
+}
+
+.semaforo-info {
+  background-color: #f0f0f0; /* Fondo diferente para destacar la información */
+  border: 1px solid #ccc; /* Borde sutil */
+  padding: 10px;
+  margin: 0 20px 20px 20px; /* Espacio después de cada semáforo */
+  text-align: left; /* Alineación del texto a la izquierda para mejor lectura */
+}
+
+.light {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin: 5px auto;
+  background-color: #bbb; /* Gris para apagado */
+}
+
+.red {
+  background-color: red;
+}
+.yellow {
+  background-color: yellow;
+}
+.green,
+.green-2 {
+  background-color: green;
+}
