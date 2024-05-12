@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Semáforos</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="app">
+        <h1>Control de Semáforo</h1>
+        <div class="info-general">
+            <div class="semaforo-info">
+            <p id="timestamp">Timestamp: Cargando...</p>
+            </div>
+            <div class="semaforo-info">
+            <p id="cycle">Ciclo: Cargando...</p>
+            </div>
+            <div class="semaforo-info">
+            <p id="valorConstante">Valor Constante: Esperando datos...</p>
+            </div>
+            <div class="semaforo-info">
+            <p id="valorVariable">Valor Variable: Esperando datos...</p>
+            </div>
+            <div class="semaforo-info">
+            <p id="nCiclo">Número de Ciclo: Cargando...</p>
+            </div>
+            <div class="semaforo-info">
+            <p id="nTiempo">Tiempo transcurrido: Cargando...</p>
+            </div>
+        </div>
+        <div class="Contenedor background-image">
+            <div class="traffic-system">
+                <div class="pedestrian-lightSP1" id="SP1">
+                    <div class="light red"></div>
+                    <div class="light green"></div>
+                </div>
+                <!-- Semáforo SV1 -->
+                <div class="traffic-lightSV1 vehicle" id="SV2-1">
+                    <div class="light red"></div>
+                    <div class="light yellow"></div>
+                    <div class="light green"></div>
+                </div>
+                <!--<div class="semaforo-info" id="info-SV2-1">
+                    <p>Estado Actual: Cargando...</p>
+                </div>-->
+                <div class="pedestrian-lightSP2" id="SP2">
+                    <div class="light red"></div>
+                    <div class="light green"></div>
+                </div>
+                <div class="pedestrian-lightSP3" id="SP3">
+                    <div class="light red"></div>
+                    <div class="light green"></div>
+                </div>
+
+                <!-- Semáforo SV4-1 -->
+                <div class="traffic-lightSV2 vehicle-four" id="SV4-1">
+                    <div class="light red"></div>
+                    <div class="light yellow"></div>
+                    <div class="light green"></div> 
+                    <div class="light green-2"></div> 
+                </div>
+                <!--<div class="semaforo-info" id="info-SV4-1">
+                    <p>Estado Actual: Cargando...</p>
+                </div>-->
+                <div class="pedestrian-lightSP4" id="SP4">
+                    <div class="light red"></div>
+                    <div class="light green"></div>
+                </div>
+
+                <div class="traffic-lightSV3 vehicle" id="SV2-1">
+                    <div class="light red"></div>
+                    <div class="light yellow"></div>
+                    <div class="light green"></div>
+                </div>
+
+                <div class="pedestrian-lightSP5" id="SP5">
+                    <div class="light red"></div>
+                    <div class="light green"></div>
+                </div>
+
+                <div class="pedestrian-lightSP6" id="SP6">
+                    <div class="light red"></div>
+                    <div class="light green"></div>
+                </div>
+
+                <div class="pedestrian-lightSP7" id="SP7">
+                    <div class="light red"></div>
+                    <div class="light green"></div>
+                </div>
+
+                <div class="pedestrian-lightSP8" id="SP8">
+                    <div class="light red"></div>
+                    <div class="light green"></div>
+                </div>
+
+                <div class="traffic-lightSV4 vehicle" id="SV2-1">
+                    <div class="light red"></div>
+                    <div class="light yellow"></div>
+                    <div class="light green"></div>
+                </div>
+
+                <!-- Agrega más semáforos con la misma estructura -->       
+            </div>
+        </div>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+</html>

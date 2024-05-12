@@ -1,0 +1,204 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #4e5369;
+}
+
+.background-image {
+  background-image: url('Imagenes/Interseccion.png');/* Reemplaza 'ruta_de_la_imagen.jpg' con la ruta de tu imagen */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.Contenedor{
+  margin-top: 1%;
+  border-radius: 5px;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.traffic-system {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 45%;
+  align-items: flex-start; /* Asegúrate de que los elementos están alineados al inicio verticalmente */
+}
+
+.pedestrian-lightSP1 { /*POSISCION SP1*/
+  position: absolute;
+  top: 14%;
+  right: 72%;
+  background-color: #333;
+  padding: 1%;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  margin: 10px 20px 0 20px; /* Margen extra en la parte superior para separar de la info */
+}
+
+.traffic-lightSV1{
+  position:absolute;
+  top:-40%;
+  right: 29%;
+  background-color: #333;
+  padding: 1%;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  margin: 50% 30% 0% 30%; /* Margen extra en la parte superior para separar de la info */
+}
+
+.traffic-lightSV2{ /*POSICION SV2 cuatro luces4*/
+  position:absolute;
+  top: -35%;
+  right: -6%;
+  background-color: #333;
+  padding: 1%;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  margin: 50% 30% 0% 30%; /* Margen extra en la parte superior para separar de la info */
+}
+
+.pedestrian-lightSP2 { /*POSISCION SP1*/
+  position:absolute;
+  top: 12%;
+  right: 46%;
+  background-color: #333;
+  padding: 1%;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  margin: 10px 20px 0 20px; /* Margen extra en la parte superior para separar de la info */
+}
+
+.pedestrian-lightSP3 { /*POSISCION SP1*/
+  position:absolute;
+  top: 12%;
+  right:38%;
+  background-color: #333;
+  padding: 1%;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  margin: 10px 20px 0 20px; /* Margen extra en la parte superior para separar de la info */
+}
+
+.pedestrian-lightSP4 { /*POSISCION SP1*/
+  position:absolute;
+  top: 30%;
+  right:14%;
+  background-color: #333;
+  padding: 1%;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  margin: 10px 20px 0 20px; /* Margen extra en la parte superior para separar de la info */
+}
+
+.traffic-lightSV3{ /*POSICION SV2 cuatro luces4*/
+  position:absolute;
+  top: -11%;
+  right: -11%;
+  background-color: #333;
+  padding: 1%;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  margin: 50% 30% 0% 30%; /* Margen extra en la parte superior para separar de la info */
+}
+
+.pedestrian-lightSP5 { /*POSISCION SP1*/
+  position:absolute;
+  top: 79%;
+  right:21%;
+  background-color: #333;
+  padding: 1%;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  margin: 10px 20px 0 20px; /* Margen extra en la parte superior para separar de la info */
+}
+
+.pedestrian-lightSP6 { /*POSISCION SP1*/
+  position:absolute;
+  top: 75%;
+  right:47%;
+  background-color: #333;
+  padding: 1%;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  margin: 10px 20px 0 20px; /* Margen extra en la parte superior para separar de la info */
+}
+
+.pedestrian-lightSP7 { /*POSISCION SP1*/
+  position:absolute;
+  top: 75%;
+  right:56%;
+  background-color: #333;
+  padding: 1%;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  margin: 10px 20px 0 20px; /* Margen extra en la parte superior para separar de la info */
+}
+
+.pedestrian-lightSP8 { /*POSISCION SP1*/
+  position:absolute;
+  top: 65%;
+  right:77%;
+  background-color: #333;
+  padding: 1%;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  margin: 10px 20px 0 20px; /* Margen extra en la parte superior para separar de la info */
+}
+
+.traffic-lightSV4{ /*POSICION SV2 cuatro luces4*/
+  position:absolute;
+  top: -9%;
+  right: 50%;
+  background-color: #333;
+  padding: 1%;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  margin: 50% 30% 0% 30%; /* Margen extra en la parte superior para separar de la info */
+}
+
+.semaforo-info {
+  background-color: #d9e1eb; /* Fondo diferente para destacar la información */
+  padding: 1%;
+  text-align: left; /* Alineación del texto a la izquierda para mejor lectura */
+  display: inline-block;
+  width: calc(16% - 2%); /* Para que cada div ocupe el 20% del ancho de la pantalla, menos los márgenes */
+  vertical-align: top; /* Alineación vertical superior */
+  box-sizing: border-box;
+  border-radius: 5px;
+  margin-left: 2%;
+}
+
+.light {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin: 5px auto;
+  background-color: #bbb; /* Gris para apagado */
+}
+
+.red {
+  background-color: red;
+}
+.yellow {
+  background-color: yellow;
+}
+.green,
+.green-2 {
+  background-color: green;
+}
