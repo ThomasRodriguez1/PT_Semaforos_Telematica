@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const apiUrl = 'http://localhost:3000/getCiclosSemaforos';
-    setInterval(() => fetchData(apiUrl), 1000); // Llama a fetchData cada segundo
+    const apiUrl = 'http://localhost:3000/getCiclosSemaforos';  
+    //setInterval(() => fetchData(apiUrl), 1000); // Llama a fetchData cada segundo
 });
+
 
 let nCiclo = 0; // Inicia el contador de ciclos
 let valorConstante = 0; // Inicia el valor constante
@@ -51,7 +52,7 @@ async function fetchData(url = '') {
     document.getElementById('cycle').innerText = `Ciclo: ${data.cicloMilisegundos}`;
     const tiempoEnCicloActual = calcularTiempoCiclo(data.timestamp, data.cicloMilisegundos);
     actualizarValores(data.cicloMilisegundos, tiempoEnCicloActual);
-    updateTrafficLights(data.cicloMilisegundos, tiempoEnCicloActual);
+    //updateTrafficLights(data.cicloMilisegundos, tiempoEnCicloActual);
 }
 
 function updateTrafficLights(cicloMilisegundos, tiempoEnCicloActual) {
@@ -137,3 +138,6 @@ function updatePedestrianLight(cicloMilisegundos, tiempoEnCicloActual, semaforoI
         estadoSemaforo.innerText = 'Estado Actual: Detenerse';
     }
 }
+
+
+
