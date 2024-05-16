@@ -33,8 +33,8 @@ body, html {
   top: 14%;
   right: 72%;
   background-color: #333;
-  padding: 1%;
-  border-radius: 5px;
+  padding: 0.7%;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   margin: 10px 20px 0 20px; /* Margen extra en la parte superior para separar de la info */
@@ -45,8 +45,8 @@ body, html {
   top:-40%;
   right: 29%;
   background-color: #333;
-  padding: 1%;
-  border-radius: 5px;
+  padding: 0.7%;
+  border-radius: 10px;
   display: flex;
   flex-direction: row;
   margin: 50% 30% 0% 30%; /* Margen extra en la parte superior para separar de la info */
@@ -57,8 +57,8 @@ body, html {
   top: -35%;
   right: -6%;
   background-color: #333;
-  padding: 1%;
-  border-radius: 5px;
+  padding: 0.7%;
+  border-radius: 10px;
   display: flex;
   flex-direction: row;
   margin: 50% 30% 0% 30%; /* Margen extra en la parte superior para separar de la info */
@@ -69,8 +69,8 @@ body, html {
   top: 12%;
   right: 46%;
   background-color: #333;
-  padding: 1%;
-  border-radius: 5px;
+  padding: 0.7%;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   margin: 10px 20px 0 20px; /* Margen extra en la parte superior para separar de la info */
@@ -81,8 +81,8 @@ body, html {
   top: 12%;
   right:38%;
   background-color: #333;
-  padding: 1%;
-  border-radius: 5px;
+  padding: 0.7%;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   margin: 10px 20px 0 20px; /* Margen extra en la parte superior para separar de la info */
@@ -93,8 +93,8 @@ body, html {
   top: 30%;
   right:14%;
   background-color: #333;
-  padding: 1%;
-  border-radius: 5px;
+  padding: 0.7%;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   margin: 10px 20px 0 20px; /* Margen extra en la parte superior para separar de la info */
@@ -105,8 +105,8 @@ body, html {
   top: -11%;
   right: -11%;
   background-color: #333;
-  padding: 1%;
-  border-radius: 5px;
+  padding: 0.7%;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   margin: 50% 30% 0% 30%; /* Margen extra en la parte superior para separar de la info */
@@ -117,8 +117,8 @@ body, html {
   top: 79%;
   right:21%;
   background-color: #333;
-  padding: 1%;
-  border-radius: 5px;
+  padding: 0.7%;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   margin: 10px 20px 0 20px; /* Margen extra en la parte superior para separar de la info */
@@ -129,8 +129,8 @@ body, html {
   top: 75%;
   right:47%;
   background-color: #333;
-  padding: 1%;
-  border-radius: 5px;
+  padding: 0.7%;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   margin: 10px 20px 0 20px; /* Margen extra en la parte superior para separar de la info */
@@ -141,8 +141,8 @@ body, html {
   top: 75%;
   right:56%;
   background-color: #333;
-  padding: 1%;
-  border-radius: 5px;
+  padding: 0.7%;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   margin: 10px 20px 0 20px; /* Margen extra en la parte superior para separar de la info */
@@ -153,8 +153,8 @@ body, html {
   top: 65%;
   right:77%;
   background-color: #333;
-  padding: 1%;
-  border-radius: 5px;
+  padding: 0.7%;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   margin: 10px 20px 0 20px; /* Margen extra en la parte superior para separar de la info */
@@ -165,8 +165,8 @@ body, html {
   top: -9%;
   right: 50%;
   background-color: #333;
-  padding: 1%;
-  border-radius: 5px;
+  padding: 0.7%;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   margin: 50% 30% 0% 30%; /* Margen extra en la parte superior para separar de la info */
