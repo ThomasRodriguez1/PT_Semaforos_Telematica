@@ -83,16 +83,13 @@ main {
   align-items: center;
   position: relative;
   overflow: hidden;
-  width: 70%;
-  padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
-  max-width: 100%; /* Ensure the container doesn't exceed the viewport width */
+  width: 100%;
+  padding-top: 40%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
 }
 
 .background-image {
   width: 100%;
   height: 100%;
-  top: 0;
-  left: 0;
   background-image: url("/MM-Semaforo/css/Imagenes/int4.png");
   background-size: contain;
   background-repeat: no-repeat;
@@ -108,8 +105,8 @@ main {
 }
 
 .light {
-  width: 23px;
-  height: 23px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   margin: 4px auto;
   background-color: #bbb;
@@ -131,7 +128,7 @@ main {
 .pedestrian-light,
 .traffic-light {
   background-color: #333;
-  padding: 0.6%;
+  padding: 0.5%;
   border-radius: 10px;
 }
 
@@ -146,47 +143,51 @@ main {
 }
 
 /* Ajustar las posiciones específicas de los semáforos según sea necesario */
+.selector{
+  box-shadow: 2px 2px 8px 0 rgb(239, 115, 253), 4px 4px 16px 0 rgb(233, 56, 56), 0px 0px 24px 2px rgb(49, 95, 248);
+}
+
 .SP1 {
   position: absolute;
   top: 24%;
-  right: 61%;
+  right: 59%;
 }
 .SV1 {
   position: absolute;
-  top: 30%;
+  top: 29%;
   right: 52%;
 }
 .SP2 {
   position: absolute;
-  top: 24%;
+  top: 22%;
   right: 48%;
 }
 .SP3 {
   position: absolute;
-  top: 24%;
-  right: 44%;
+  top: 22%;
+  right: 45%;
 }
 .SV2 {
   /* 4 luces*/
   position: absolute;
   top: 34%;
-  left: 54%;
+  left: 53%;
 }
 .SP4 {
   position: absolute;
   top: 40%;
-  right: 31%;
+  right: 34%;
 }
 .SV3 {
   position: absolute;
-  top: 49.25%;
-  right:33%;
+  top: 50.25%;
+  right:36%;
   transform: rotate(90deg);
 }
 .SP5 {
   position: absolute;
   top: 72%;
-  right: 36%;
+  right: 38%;
 }
 .SP6 {
   position: absolute;
@@ -196,16 +197,16 @@ main {
 .SP7 {
   position: absolute;
   top: 68%;
-  right: 53%;
+  right: 52%;
 }
 .SP8 {
   position: absolute;
   top: 60%;
-  right: 65%;
+  right: 63%;
 }
 .SV4 {
   position: absolute;
   top: 51%;
-  right: 62%;
+  right: 60%;
   transform: rotate(90deg);
 }
