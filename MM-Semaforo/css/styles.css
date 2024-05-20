@@ -198,7 +198,9 @@ body, html {
 .yellow {
   background-color: yellow;
 }
-.green,
+.green{
+  background-color: green;
+}
 .green-2 {
   background-color: green;
 }
