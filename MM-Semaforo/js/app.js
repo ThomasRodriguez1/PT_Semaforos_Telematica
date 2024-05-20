@@ -182,22 +182,23 @@ function comportamiento_5(cicloMilisegundos, tiempoEnCicloActual, SV1Id) {
         greenLight.style.backgroundColor = '#2ECC40'; // Verde
         redLight.style.backgroundColor = '#ddd';
         yellowLight.style.backgroundColor = '#ddd';
-        estadoSemaforo.innerText = 'Estado Actual: Verde';
+        //estadoSemaforo.innerText = 'Estado Actual: Verde';
     } else if (tiempoEnCicloActual <= verdeDuracion + amarilloDuracion && tiempoEnCicloActual >= verdeDuracion) {
         yellowLight.style.backgroundColor = '#FFDC00'; // Amarillo
         redLight.style.backgroundColor = '#ddd';
         greenLight.style.backgroundColor = '#ddd';
-        estadoSemaforo.innerText = 'Estado Actual: Amarillo';
+        //estadoSemaforo.innerText = 'Estado Actual: Amarillo';
     } else {
         redLight.style.backgroundColor = '#FF4136'; // Rojo
         greenLight.style.backgroundColor = '#ddd';
         yellowLight.style.backgroundColor = '#ddd';
-        estadoSemaforo.innerText = 'Estado Actual: Rojo';
+        //estadoSemaforo.innerText = 'Estado Actual: Rojo';
     }
 }
 
 function comportamiento_6(cicloMilisegundos, tiempoEnCicloActual, semaforoId) {
     const verdeDuracion = cicloMilisegundos * 0.50; // 50% del ciclo
+    const verde2=cicloMilisegundos*0.1;
     const rojoDuracion = cicloMilisegundos * 0.30; // 30% del ciclo
     const amarilloDuracion = cicloMilisegundos * 0.20; // 20% del ciclo
 
