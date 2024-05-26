@@ -11,6 +11,16 @@ let intervalgreen;
 let intervalgreen1 = {};
 let intervalgreen2, intervalgreen3;
 
+//Variables para ambulancia
+/*
+false para desaparecer respectiva ambulancia
+true para desaparecer respectiva ambulancia
+*/
+let ambulanceNorth=false;
+let ambulanceSouth=false;
+let ambulanceEast=false;
+let ambulanceWest=false;
+
 // Función para calcular el tiempo en el ciclo actual y los ciclos pasados
 function calcularTiempoCiclo(timestampApi, cicloMilisegundos) {
     const ahora = new Date();
@@ -56,6 +66,24 @@ async function fetchData(url = '') {
     const tiempoEnCicloActual = calcularTiempoCiclo(data.timestamp, data.cicloMilisegundos);
     actualizarValores(data.cicloMilisegundos, tiempoEnCicloActual);
     updateTrafficLights(data.cicloMilisegundos, tiempoEnCicloActual);
+    updateAmbulances();
+}
+
+
+
+function updateAmbulances(){
+
+    updateVisibility('ambulanceN', ambulanceNorth);
+    updateVisibility('ambulanceS', ambulanceSouth);
+    updateVisibility('ambulanceW', ambulanceWest);
+    updateVisibility('ambulanceE', ambulanceEast);
+}
+
+function updateVisibility(id, isVisible) {
+    var element = document.getElementById(id);
+    if (element) {
+        element.style.display = isVisible ? 'block' : 'none';  // Asume que 'block' es el display original cuando es visible
+    }
 }
 
 function updateTrafficLights(cicloMilisegundos, tiempoEnCicloActual) {

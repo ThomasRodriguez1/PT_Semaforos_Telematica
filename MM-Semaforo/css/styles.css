@@ -210,3 +210,41 @@ main {
   right: 60%;
   transform: rotate(90deg);
 }
+
+
+.ambulance {
+  position: absolute;
+  width: 8%; /* Ajusta el tamaño según tus necesidades */
+  height: auto; /* Mantiene la proporción de la imagen */
+  z-index: 10; /* Asegúrate de que la ambulancia esté sobre otros elementos */
+  
+}
+
+.west{
+  top: 50%; /* Puedes ajustar estos valores según necesites */
+  left: 30%; /* Puedes ajustar estos valores según necesites */  
+  transform: translate(-50%, -50%) scaleX(-1); /* Centra la imagen en (top, left) */
+}
+
+.east{
+  top: 55%; /* Puedes ajustar estos valores según necesites */
+  left: 70%; /* Puedes ajustar estos valores según necesites */
+  transform: translate(-50%, -50%); /* Centra la imagen en (top, left) */
+  transform: rotate(20deg);
+}
+
+.south{
+  top: 84%; /* Puedes ajustar estos valores según necesites */
+  left: 50%; /* Puedes ajustar estos valores según necesites */
+  transform: translate(-50%, -50%); /* Centra la imagen en (top, left) */
+  transform: rotate(100deg);
+}
+
+.north{
+  top: 10%; /* Puedes ajustar estos valores según necesites */
+  left: 42%; /* Puedes ajustar estos valores según necesites */
+  transform: translate(-50%, -50%); /* Centra la imagen en (top, left) */
+  transform: rotate(279deg);
+
+
+}
