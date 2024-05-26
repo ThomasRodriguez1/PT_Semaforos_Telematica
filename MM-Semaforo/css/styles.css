@@ -90,7 +90,7 @@ main {
 .background-image {
   width: 100%;
   height: 100%;
-  background-image: url("../css/Imagenes/int4.png");
+  background-image: url("../css/Imagenes/int6.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -152,20 +152,63 @@ main {
   top: 24%;
   right: 59%;
 }
+
+.text-lights{
+  position: absolute;
+  font-family: Arial, sans-serif; /* Establece Arial como la fuente y sans-serif como fallback */
+  font-size: 100%; /* Tamaño del texto */
+  /* Color del texto, cambia a 'black' si prefieres negro */
+}
+.TSP1{
+  top: 17%;
+  right: 59%;
+  color: black;
+  text-shadow:    -1px 1px 0px black;/* Sombra de texto para mejorar la legibilidad en fondos claros si el texto es blanco */
+  
+}
+
 .SV1 {
   position: absolute;
   top: 29%;
   right: 52%;
 }
+
+.TSV1{
+  top: 35%;
+  right: 53.5%;
+  color: black;
+  text-shadow:    -1px 1px 0px black;/* Sombra de texto para mejorar la legibilidad en fondos claros si el texto es blanco */
+
+}
+
 .SP2 {
   position: absolute;
   top: 22%;
   right: 48%;
 }
+
+
+.TSP2{
+  top: 15%;
+  right: 48%;
+  color: black;
+  text-shadow:    -1px 1px 0px black;/* Sombra de texto para mejorar la legibilidad en fondos claros si el texto es blanco */
+
+}
+
+
 .SP3 {
   position: absolute;
   top: 22%;
   right: 45%;
+}
+
+.TSP3{
+  top: 15%;
+  right: 45%;
+  color: black;
+  text-shadow:    -1px 1px 0px black;/* Sombra de texto para mejorar la legibilidad en fondos claros si el texto es blanco */
+
 }
 .SV2 {
   /* 4 luces*/
@@ -173,43 +216,115 @@ main {
   top: 34%;
   left: 53%;
 }
+
+.TSV2{
+  top: 40%;
+  right: 42%;
+  color: black;
+  text-shadow:    -1px 1px 0px black;/* Sombra de texto para mejorar la legibilidad en fondos claros si el texto es blanco */
+
+}
 .SP4 {
   position: absolute;
   top: 40%;
   right: 34%;
 }
+
+.TSP4{
+  top: 34%;
+  right: 34%;
+  color: black;
+  text-shadow:    -1px 1px 0px black;/* Sombra de texto para mejorar la legibilidad en fondos claros si el texto es blanco */
+
+}
+
 .SV3 {
   position: absolute;
   top: 50.25%;
   right:36%;
   transform: rotate(90deg);
 }
+
+.TSV3{
+  top: 58%;
+  right: 37.5%;
+  color: black;
+  text-shadow:    -1px 1px 0px black;/* Sombra de texto para mejorar la legibilidad en fondos claros si el texto es blanco */
+
+}
+
+
 .SP5 {
   position: absolute;
   top: 72%;
   right: 38%;
 }
+
+.TSP5{
+  top: 72%;
+  right: 35%;
+  color: black;
+  text-shadow:    -1px 1px 0px black;/* Sombra de texto para mejorar la legibilidad en fondos claros si el texto es blanco */
+
+}
+
+
 .SP6 {
   position: absolute;
   top: 68%;
   right: 49%;
 }
+
+.TSP6{
+  top: 77%;
+  right: 48%;
+  color: black;
+  text-shadow:    -1px 1px 0px black;/* Sombra de texto para mejorar la legibilidad en fondos claros si el texto es blanco */
+
+}
+
 .SP7 {
   position: absolute;
   top: 68%;
   right: 52%;
 }
+
+.TSP7{
+  top: 77%;
+  right: 52%;
+  color: black;
+  text-shadow:    -1px 1px 0px black;/* Sombra de texto para mejorar la legibilidad en fondos claros si el texto es blanco */
+}
+
+
 .SP8 {
   position: absolute;
   top: 60%;
   right: 63%;
 }
+
+.TSP8{
+  top: 69%;
+  right: 63%;
+  color: black;
+  text-shadow:    -1px 1px 0px black;/* Sombra de texto para mejorar la legibilidad en fondos claros si el texto es blanco */
+}
+
+
 .SV4 {
   position: absolute;
   top: 51%;
   right: 60%;
   transform: rotate(90deg);
 }
+
+.TSV4{
+  top: 51%;
+  right: 58%;
+  color: black;
+  text-shadow:    -1px 1px 0px black;/* Sombra de texto para mejorar la legibilidad en fondos claros si el texto es blanco */
+}
+
 
 
 .ambulance {
@@ -245,6 +360,5 @@ main {
   left: 42%; /* Puedes ajustar estos valores según necesites */
   transform: translate(-50%, -50%); /* Centra la imagen en (top, left) */
   transform: rotate(279deg);
-
-
 }
+
