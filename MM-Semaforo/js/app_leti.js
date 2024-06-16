@@ -41,12 +41,23 @@ let ambulanceWest=false;
 
 // Función para calcular el tiempo en el ciclo actual y los ciclos pasados
 function calcularTiempoCiclo(timestampApi, cicloMilisegundos) {
-    const ahora = new Date();
-    const inicioCiclo = new Date(timestampApi);
+    const ahora = moment().tz("America/Mexico_City").toDate();
+    const inicioCiclo = moment.utc(timestampApi).tz("America/Mexico_City").toDate();
     const diferencia = ahora.getTime() - inicioCiclo.getTime();
     const ciclosPasados = Math.floor(diferencia / cicloMilisegundos);
     const tiempoEnCicloActual = diferencia % cicloMilisegundos;
+    const fecha_utc =inicioCiclo.toLocaleString('es-ES', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric'
+        //fractionalSecondDigits: 3
+    });
 
+    document.getElementById('timestamp').innerText = `Timestamp: ${fecha_utc}`;
     document.getElementById('nCiclo').innerText = `Número de Ciclo: ${ciclosPasados}`;
     document.getElementById('nTiempo').innerText = `Número de tiempo_actual: ${tiempoEnCicloActual}`;
     return tiempoEnCicloActual;
@@ -79,7 +90,7 @@ async function fetchData(url = '') {
     }
     
     const data = await response.json();
-    document.getElementById('timestamp').innerText = `Timestamp: ${data.timestamp}`;
+    
     document.getElementById('cycle').innerText = `Ciclo: ${data.cicloMilisegundos}`;
     const tiempoEnCicloActual = calcularTiempoCiclo(data.timestamp, data.cicloMilisegundos);
     actualizarValores(data.cicloMilisegundos, tiempoEnCicloActual);
