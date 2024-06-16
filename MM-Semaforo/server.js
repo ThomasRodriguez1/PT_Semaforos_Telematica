@@ -13,9 +13,13 @@ app.get('/getCiclosSemaforos', async (req, res) => {
         const bodyParsed = JSON.parse(response.data.body);
         
         const datos = {
-            ultimoCiclo: bodyParsed.Data[1].ScalarValue,
-            timestamp: bodyParsed.Data[2].ScalarValue,
-            cicloMilisegundos: bodyParsed.Data[3].ScalarValue
+            ultimoCiclo: bodyParsed.ultimoCiclo,
+            timestamp: bodyParsed.timestamp,
+            cicloMilisegundos: bodyParsed.cicloMilisegundos,
+            ambulanciaNorte: bodyParsed.ambulancias.NORTE,
+            ambulanciaSur: bodyParsed.ambulancias.SUR,
+            ambulanciaEste: bodyParsed.ambulancias.ESTE,
+            ambulanciaOeste: bodyParsed.ambulancias.OESTE,
         };
 
         res.json(datos);

@@ -2,6 +2,24 @@ document.addEventListener("DOMContentLoaded", function() {
     const apiUrl = 'http://localhost:3000/getCiclosSemaforos';
     setInterval(() => fetchData(apiUrl), 1000); // Llama a fetchData cada segundo
 });
+/*
+document.addEventListener("DOMContentLoaded", function() {
+    const apiUrl = 'http://localhost:3000/getCiclosSemaforos';
+    setInterval(() => {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 5000); // Cancelar la solicitud si tarda más de 5 segundos
+
+        fetchData(apiUrl, controller)
+            .catch(error => {
+                if (error.name === 'AbortError') {
+                    console.log('Fetch aborted');
+                } else {
+                    console.error('Fetch error:', error);
+                }
+            })
+            .finally(() => clearTimeout(timeoutId));
+    }, 1000); // Llama a fetchData cada segundo
+});*/
 
 let nCiclo = 0; // Inicia el contador de ciclos
 let valorConstante = 0; // Inicia el valor constante
@@ -66,18 +84,16 @@ async function fetchData(url = '') {
     const tiempoEnCicloActual = calcularTiempoCiclo(data.timestamp, data.cicloMilisegundos);
     actualizarValores(data.cicloMilisegundos, tiempoEnCicloActual);
     updateTrafficLights(data.cicloMilisegundos, tiempoEnCicloActual);
-    updateAmbulances();
+    updateAmbulances(data);
 }
 
-
-
-function updateAmbulances(){
-
-    updateVisibility('ambulanceN', ambulanceNorth);
-    updateVisibility('ambulanceS', ambulanceSouth);
-    updateVisibility('ambulanceW', ambulanceWest);
-    updateVisibility('ambulanceE', ambulanceEast);
+function updateAmbulances(data) {
+    updateVisibility('ambulanceN', data.ambulanciaNorte);
+    updateVisibility('ambulanceS', data.ambulanciaSur);
+    updateVisibility('ambulanceW', data.ambulanciaOeste);
+    updateVisibility('ambulanceE', data.ambulanciaEste);
 }
+
 
 function updateVisibility(id, isVisible) {
     var element = document.getElementById(id);
